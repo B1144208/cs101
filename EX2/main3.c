@@ -8,4 +8,5 @@ int main()
         printf("奇數");
     else
         printf("偶數");
+    return 0;
 }
