@@ -12,9 +12,8 @@ int main()
     printf("歡迎光臨長庚樂透彩購買機台\n");
     printf("請問您要買幾組樂透彩:");
 
-    do{
-        scanf("%d", &n);
-    }while(n<1 || n>5);
+    while(scanf("%d", &n) && (n<1 || n>5))
+        printf("Input error\n");
 
     FILE *fp;
     if((fp = fopen("lotto.txt", "w+")) == NULL){
@@ -52,9 +51,11 @@ int main()
         fprintf(fp, "\n");
     }
     for( ; i<=5; i++){
-        if(fprintf(fp, "[%d]:=====================\n", i)<0)
+        if(fprintf(fp, "[%d]: -- -- -- -- -- -- --\n", i)<0)
             printf("Write file error\n");
     }
+    if(fprintf(fp, "=======csie@CGU========\n")<0)
+            printf("Write file error\n");
     fclose(fp);
 
     printf("已為您購買的%d組樂透組和輸出至lotto.txt", n);
